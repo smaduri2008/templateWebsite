@@ -7,28 +7,28 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Jasmine R.",
-    specialty: "Master Stylist",
+    name: "Sophia R.",
+    service: "Hair Styling",
     avatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&q=80",
     quote:
-      "Moving to a salon suite was the best business decision I ever made. My income doubled in the first 6 months and I finally have the freedom to build my own brand. The suite is absolutely gorgeous — my clients love it.",
-    years: "2 years as a suite owner",
+      "I've never felt so pampered at a salon! The private suite was gorgeous — it felt like having my own personal stylist. Maya totally transformed my hair and I walked out feeling like a completely new person.",
+    date: "March 2025",
   },
   {
-    name: "Camille T.",
-    specialty: "Licensed Esthetician",
+    name: "Lauren K.",
+    service: "Skincare & Facials",
     avatar: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&q=80",
     quote:
-      "I was nervous about leaving the security of my commission salon, but I made back my rent in the first week. The 24/7 access is a game changer — I can accommodate evening appointments and my revenue has never been higher.",
-    years: "1.5 years as a suite owner",
+      "Camille is an absolute gem. My skin has never looked better! The private suite setting meant the entire hour was just about me — no noise, no distractions. I've already booked my next appointment.",
+    date: "February 2025",
   },
   {
-    name: "Destiny M.",
-    specialty: "Nail Technician",
+    name: "Priya M.",
+    service: "Nail Art & Manicures",
     avatar: "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=150&q=80",
     quote:
-      "The luxury of having my own private space to do nails — no distractions, no drama. My clients feel special and pampered. The facilities are top-notch and the management team is always responsive.",
-    years: "8 months as a suite owner",
+      "Destiny's nail artistry is unreal — she turned my nails into tiny works of art. The whole experience was so relaxing and personal. I've been recommending LuxeSuite to all my friends!",
+    date: "January 2025",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function TestimonialSlider() {
     setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
 
   return (
-    <section className="py-24 px-6 bg-[#2d2d2d]">
+    <section id="testimonials" className="py-24 px-6 bg-[#2d2d2d]">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,10 +51,10 @@ export default function TestimonialSlider() {
           className="text-center mb-16"
         >
           <p className="text-[#c9a96e] uppercase tracking-[0.3em] text-sm mb-3 font-sans">
-            Success Stories
+            Client Love
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#f9f7f4]">
-            Hear From Our Suite Owners
+            What Our Clients Say
           </h2>
         </motion.div>
 
@@ -98,10 +98,10 @@ export default function TestimonialSlider() {
                     {testimonials[current].name}
                   </p>
                   <p className="text-[#c9a96e] text-sm font-sans">
-                    {testimonials[current].specialty}
+                    {testimonials[current].service}
                   </p>
                   <p className="text-[#f9f7f4]/40 text-xs font-sans mt-1">
-                    {testimonials[current].years}
+                    {testimonials[current].date}
                   </p>
                 </div>
               </div>

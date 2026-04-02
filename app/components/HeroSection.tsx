@@ -25,7 +25,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="text-[#c9a96e] uppercase tracking-[0.3em] text-sm mb-4 font-sans"
         >
-          Luxury Salon Suites
+          Luxury Beauty &amp; Wellness
         </motion.p>
 
         <motion.h1
@@ -34,8 +34,8 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-7xl font-bold text-[#f9f7f4] leading-tight mb-6"
         >
-          It&apos;s Time to Be{" "}
-          <span className="text-[#c9a96e]">Your Own Boss</span>
+          Experience Personalized Care,{" "}
+          <span className="text-[#c9a96e]">Your Way.</span>
         </motion.h1>
 
         <motion.p
@@ -44,8 +44,9 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-[#f9f7f4]/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-sans leading-relaxed"
         >
-          Step into your own private luxury suite. Keep 100% of your profits,
-          set your own hours, and build the brand you&apos;ve always dreamed of.
+          Discover top-rated beauty professionals — all under one roof. From
+          hair styling to skincare and massage therapy, your perfect look
+          and lasting relaxation are just one booking away.
         </motion.p>
 
         <motion.div
@@ -55,17 +56,17 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="#contact"
+            href="#booking"
             className="inline-flex items-center gap-2 bg-[#c9a96e] hover:bg-[#b8944f] text-[#2d2d2d] font-bold px-8 py-4 rounded-none transition-all duration-300 text-sm uppercase tracking-widest font-sans"
           >
-            Book a Private Tour
+            Book Your Salon Experience
             <ArrowRight size={18} />
           </a>
           <a
-            href="#suites"
+            href="#services"
             className="inline-flex items-center gap-2 border border-[#f9f7f4]/50 hover:border-[#c9a96e] text-[#f9f7f4] hover:text-[#c9a96e] px-8 py-4 rounded-none transition-all duration-300 text-sm uppercase tracking-widest font-sans"
           >
-            View Suites
+            Explore Services
           </a>
         </motion.div>
       </div>

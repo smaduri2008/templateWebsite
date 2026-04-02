@@ -11,8 +11,8 @@ export default function Footer() {
               LUXE<span className="text-[#c9a96e]">SUITE</span>
             </h3>
             <p className="text-[#f9f7f4]/50 font-sans text-sm leading-relaxed">
-              Luxury private salon suites for independent beauty professionals.
-              Elevate your brand. Keep your profits.
+              Premium beauty services in private luxury suites. Experience
+              personalized care from top-rated specialists — all in one location.
             </p>
             <div className="flex gap-4 mt-6">
               <a
@@ -38,18 +38,22 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {["Suite Options", "Amenities", "Profit Calculator", "Testimonials", "Book a Tour"].map(
-                (link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-[#f9f7f4]/50 hover:text-[#c9a96e] font-sans text-sm transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { label: "Our Services", href: "#services" },
+                { label: "Featured Professionals", href: "#professionals" },
+                { label: "How It Works", href: "#how-it-works" },
+                { label: "Testimonials", href: "#testimonials" },
+                { label: "Book Now", href: "#booking" },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-[#f9f7f4]/50 hover:text-[#c9a96e] font-sans text-sm transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
