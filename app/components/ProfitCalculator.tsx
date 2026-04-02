@@ -1,29 +1,62 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { Search, CalendarCheck, Sparkles, Repeat } from "lucide-react";
+
+const steps = [
+  {
+    step: "01",
+    icon: Search,
+    title: "Browse & Choose",
+    description:
+      "Explore our curated roster of beauty specialists. Filter by service type, read reviews, and find the perfect match for your needs.",
+  },
+  {
+    step: "02",
+    icon: CalendarCheck,
+    title: "Book Your Appointment",
+    description:
+      "Select your preferred date, time, and specialist using our easy booking form. Flexible scheduling available 7 days a week.",
+  },
+  {
+    step: "03",
+    icon: Sparkles,
+    title: "Enjoy Private, Premium Service",
+    description:
+      "Arrive and be welcomed into a beautifully designed private suite. No crowds, no distractions — just you and your specialist.",
+  },
+  {
+    step: "04",
+    icon: Repeat,
+    title: "Come Back & Rebook",
+    description:
+      "Loved your experience? Easily rebook with your favorite professional and build an ongoing relationship with your beauty team.",
+  },
+];
+
+const highlights = [
+  {
+    stat: "20+",
+    label: "Beauty Specialists",
+  },
+  {
+    stat: "4 Types",
+    label: "of Services",
+  },
+  {
+    stat: "500+",
+    label: "Happy Clients",
+  },
+  {
+    stat: "5★",
+    label: "Average Rating",
+  },
+];
 
 export default function ProfitCalculator() {
-  const [weeklyRevenue, setWeeklyRevenue] = useState(2000);
-  const commissionRate = 0.4;
-  const fixedRent = 1050;
-
-  const weeklyGross = weeklyRevenue;
-  const monthlyGross = weeklyGross * 4;
-
-  const commissionLoss = monthlyGross * commissionRate;
-  const commissionNet = monthlyGross - commissionLoss;
-
-  const suiteNet = monthlyGross - fixedRent;
-  const difference = suiteNet - commissionNet;
-
-  const formatCurrency = (n: number) =>
-    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-
   return (
-    <section className="py-24 px-6 bg-[#2d2d2d]">
-      <div className="max-w-5xl mx-auto">
+    <section id="how-it-works" className="py-24 px-6 bg-[#2d2d2d]">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,127 +65,64 @@ export default function ProfitCalculator() {
           className="text-center mb-16"
         >
           <p className="text-[#c9a96e] uppercase tracking-[0.3em] text-sm mb-3 font-sans">
-            See the Numbers
+            Simple &amp; Seamless
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#f9f7f4]">
-            Profit Calculator
+            How It Works
           </h2>
-          <p className="text-[#f9f7f4]/60 mt-4 font-sans max-w-xl mx-auto">
-            Drag the slider to estimate your weekly revenue and see how much more you keep in a salon suite.
+          <p className="text-[#f9f7f4]/60 mt-4 font-sans max-w-2xl mx-auto">
+            Multiple beauty experts, one location. We bring together the best
+            independent specialists under one roof so you get premium, private
+            service customized exactly for you.
           </p>
         </motion.div>
 
-        {/* Slider */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-12 max-w-xl mx-auto"
-        >
-          <label className="block text-[#f9f7f4]/80 font-sans text-sm mb-3 text-center">
-            Weekly Revenue:{" "}
-            <span className="text-[#c9a96e] font-bold text-lg">
-              {formatCurrency(weeklyRevenue)}
-            </span>
-          </label>
-          <input
-            type="range"
-            min={500}
-            max={5000}
-            step={100}
-            value={weeklyRevenue}
-            onChange={(e) => setWeeklyRevenue(Number(e.target.value))}
-            className="w-full accent-[#c9a96e] cursor-pointer h-2"
-          />
-          <div className="flex justify-between text-[#f9f7f4]/40 text-xs font-sans mt-1">
-            <span>$500</span>
-            <span>$5,000</span>
-          </div>
-        </motion.div>
-
-        {/* Comparison Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Commission Salon */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-[#f9f7f4]/5 border border-[#f9f7f4]/10 p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <TrendingDown size={24} className="text-red-400" />
-              <h3 className="text-xl font-bold text-[#f9f7f4]">
-                Commission Salon
-              </h3>
-            </div>
-            <p className="text-[#f9f7f4]/50 text-sm font-sans mb-6">
-              40% commission to the salon owner
-            </p>
-            <div className="space-y-3 font-sans text-sm">
-              <div className="flex justify-between text-[#f9f7f4]/70">
-                <span>Monthly Gross</span>
-                <span>{formatCurrency(monthlyGross)}</span>
-              </div>
-              <div className="flex justify-between text-red-400">
-                <span>Commission (40%)</span>
-                <span>− {formatCurrency(commissionLoss)}</span>
-              </div>
-              <div className="border-t border-[#f9f7f4]/10 pt-3 flex justify-between font-bold text-lg text-[#f9f7f4]">
-                <span>You Keep</span>
-                <span className="text-red-400">{formatCurrency(commissionNet)}</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Salon Suite */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-[#c9a96e]/10 border border-[#c9a96e]/50 p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <TrendingUp size={24} className="text-[#c9a96e]" />
-              <h3 className="text-xl font-bold text-[#f9f7f4]">
-                Our Salon Suite
-              </h3>
-            </div>
-            <p className="text-[#f9f7f4]/50 text-sm font-sans mb-6">
-              Fixed rent of {formatCurrency(fixedRent)}/month — keep the rest
-            </p>
-            <div className="space-y-3 font-sans text-sm">
-              <div className="flex justify-between text-[#f9f7f4]/70">
-                <span>Monthly Gross</span>
-                <span>{formatCurrency(monthlyGross)}</span>
-              </div>
-              <div className="flex justify-between text-[#c9a96e]/70">
-                <span>Fixed Rent</span>
-                <span>− {formatCurrency(fixedRent)}</span>
-              </div>
-              <div className="border-t border-[#c9a96e]/30 pt-3 flex justify-between font-bold text-lg text-[#f9f7f4]">
-                <span>You Keep</span>
-                <span className="text-[#c9a96e]">{formatCurrency(suiteNet)}</span>
-              </div>
-            </div>
-          </motion.div>
+        {/* Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {steps.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative"
+              >
+                <div className="text-[#c9a96e]/20 font-bold text-6xl leading-none mb-4 font-sans">
+                  {s.step}
+                </div>
+                <div className="w-12 h-12 flex items-center justify-center bg-[#c9a96e]/20 mb-4">
+                  <Icon size={22} className="text-[#c9a96e]" />
+                </div>
+                <h3 className="text-xl font-bold text-[#f9f7f4] mb-3">
+                  {s.title}
+                </h3>
+                <p className="text-[#f9f7f4]/60 text-sm leading-relaxed font-sans">
+                  {s.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Difference Banner */}
+        {/* Stats Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 bg-[#c9a96e] p-6 text-center"
+          transition={{ duration: 0.6 }}
+          className="bg-[#c9a96e] p-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
         >
-          <p className="text-[#2d2d2d] font-sans text-sm uppercase tracking-widest mb-1">
-            Monthly Advantage with a Salon Suite
-          </p>
-          <p className="text-[#2d2d2d] text-4xl font-bold">
-            +{formatCurrency(difference)}
-          </p>
+          {highlights.map((h) => (
+            <div key={h.label}>
+              <p className="text-[#2d2d2d] text-4xl font-bold mb-1">{h.stat}</p>
+              <p className="text-[#2d2d2d]/70 text-sm uppercase tracking-widest font-sans">
+                {h.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

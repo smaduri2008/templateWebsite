@@ -3,71 +3,53 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
+import { Star } from "lucide-react";
 
-const suites = [
+const professionals = [
   {
-    id: "standard",
-    name: "Standard Suite",
-    price: "$850/mo",
-    sqft: "120 sq ft",
-    image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80",
-    description:
-      "The perfect starting point for independent beauty professionals. Fully equipped and move-in ready.",
-    amenities: [
-      "Shampoo bowl & styling chair",
-      "Built-in cabinetry & storage",
-      "LED mirror with adjustable lighting",
-      "Private entry door with keypad lock",
-      "High-speed Wi-Fi included",
-      "Climate control (heat & AC)",
-    ],
+    id: "maya",
+    name: "Maya Johnson",
+    specialty: "Master Hair Stylist",
+    services: ["Cuts & Color", "Balayage", "Extensions", "Blowouts"],
+    avatar:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80",
+    rating: 4.9,
+    reviews: 214,
+    quote:
+      "I specialize in transformative color work and cuts that complement your face shape and lifestyle. Every client leaves feeling like the best version of themselves.",
   },
   {
-    id: "window",
-    name: "Window Suite",
-    price: "$1,050/mo",
-    sqft: "140 sq ft",
-    image:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80",
-    description:
-      "Bathe in natural light while you work. The premium window suite features stunning floor-to-ceiling windows.",
-    amenities: [
-      "Everything in Standard Suite",
-      "Floor-to-ceiling windows",
-      "Natural daylight lighting",
-      "Premium décor package",
-      "Extra counter workspace",
-      "Upgraded salon chair",
-    ],
+    id: "camille",
+    name: "Camille Torres",
+    specialty: "Licensed Esthetician",
+    services: ["Custom Facials", "Chemical Peels", "Microdermabrasion", "Brow Shaping"],
+    avatar:
+      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
+    rating: 5.0,
+    reviews: 178,
+    quote:
+      "Healthy, glowing skin is possible for everyone. I use medical-grade products and personalized protocols to address your unique skin concerns.",
   },
   {
-    id: "double",
-    name: "Double Suite",
-    price: "$1,650/mo",
-    sqft: "240 sq ft",
-    image:
-      "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=80",
-    description:
-      "Maximum space for your growing brand. Ideal for stylists who want to bring on an assistant or junior stylist.",
-    amenities: [
-      "Everything in Window Suite",
-      "Dual styling stations",
-      "Two shampoo bowls",
-      "Separate reception area",
-      "Expanded storage & vanity",
-      "Perfect for booth rental model",
-    ],
+    id: "destiny",
+    name: "Destiny Moore",
+    specialty: "Nail Artist & Technician",
+    services: ["Gel Manicures", "Acrylic Nails", "Nail Art", "Pedicures"],
+    avatar:
+      "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=600&q=80",
+    rating: 4.8,
+    reviews: 162,
+    quote:
+      "Your nails are a canvas — let me turn them into a masterpiece. From minimalist chic to bold artistry, I create designs that match your personality.",
   },
 ];
 
 export default function SuiteOptions() {
-  const [selected, setSelected] = useState("standard");
-  const activeSuite = suites.find((s) => s.id === selected)!;
+  const [selected, setSelected] = useState("maya");
+  const active = professionals.find((p) => p.id === selected)!;
 
   return (
-    <section id="suites" className="py-24 px-6 bg-[#f9f7f4]">
+    <section id="professionals" className="py-24 px-6 bg-[#f9f7f4]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,31 +59,35 @@ export default function SuiteOptions() {
           className="text-center mb-16"
         >
           <p className="text-[#c9a96e] uppercase tracking-[0.3em] text-sm mb-3 font-sans">
-            Find Your Fit
+            Meet the Experts
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#2d2d2d]">
-            Our Suite Options
+            Featured Professionals
           </h2>
+          <p className="text-[#2d2d2d]/60 mt-4 font-sans max-w-xl mx-auto">
+            Hand-picked beauty specialists, each with their own private suite
+            and a passion for delivering exceptional results.
+          </p>
         </motion.div>
 
-        {/* Suite Selector Tabs */}
+        {/* Professional Selector Tabs */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
-          {suites.map((suite) => (
+          {professionals.map((pro) => (
             <button
-              key={suite.id}
-              onClick={() => setSelected(suite.id)}
+              key={pro.id}
+              onClick={() => setSelected(pro.id)}
               className={`px-8 py-3 text-sm font-bold uppercase tracking-widest transition-all duration-300 font-sans ${
-                selected === suite.id
+                selected === pro.id
                   ? "bg-[#2d2d2d] text-[#c9a96e]"
                   : "bg-transparent border border-[#2d2d2d]/30 text-[#2d2d2d]/60 hover:border-[#2d2d2d] hover:text-[#2d2d2d]"
               }`}
             >
-              {suite.name}
+              {pro.name.split(" ")[0]}
             </button>
           ))}
         </div>
 
-        {/* Suite Detail Panel */}
+        {/* Professional Detail Panel */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selected}
@@ -111,48 +97,53 @@ export default function SuiteOptions() {
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-0 shadow-2xl"
           >
-            {/* Image */}
-            <div className="relative h-72 lg:h-auto overflow-hidden">
+            {/* Photo */}
+            <div className="relative h-80 lg:h-auto overflow-hidden">
               <Image
-                src={activeSuite.image}
-                alt={activeSuite.name}
+                src={active.avatar}
+                alt={active.name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
-              <div className="absolute top-6 right-6 bg-[#c9a96e] text-[#2d2d2d] px-4 py-2 font-bold text-sm font-sans z-10">
-                {activeSuite.price}
+              {/* Rating badge */}
+              <div className="absolute top-6 right-6 bg-[#c9a96e] text-[#2d2d2d] px-4 py-2 font-bold text-sm font-sans z-10 flex items-center gap-1">
+                <Star size={14} className="fill-[#2d2d2d]" />
+                {active.rating} ({active.reviews} reviews)
               </div>
             </div>
 
             {/* Details */}
             <div className="bg-[#2d2d2d] p-10 lg:p-14">
               <span className="text-[#c9a96e] text-sm uppercase tracking-widest font-sans">
-                {activeSuite.sqft}
+                {active.specialty}
               </span>
               <h3 className="text-3xl font-bold text-[#f9f7f4] mt-2 mb-4">
-                {activeSuite.name}
+                {active.name}
               </h3>
-              <p className="text-[#f9f7f4]/70 mb-8 font-sans leading-relaxed">
-                {activeSuite.description}
+              <p className="text-[#f9f7f4]/70 mb-8 font-sans leading-relaxed italic">
+                &ldquo;{active.quote}&rdquo;
               </p>
 
-              <ul className="space-y-3">
-                {activeSuite.amenities.map((amenity) => (
+              <p className="text-[#c9a96e] text-xs uppercase tracking-widest font-sans mb-3">
+                Services Offered
+              </p>
+              <ul className="space-y-2 mb-10">
+                {active.services.map((svc) => (
                   <li
-                    key={amenity}
+                    key={svc}
                     className="flex items-center gap-3 text-[#f9f7f4]/80 font-sans text-sm"
                   >
-                    <CheckCircle2 size={18} className="text-[#c9a96e] shrink-0" />
-                    {amenity}
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e] shrink-0" />
+                    {svc}
                   </li>
                 ))}
               </ul>
 
               <a
-                href="#contact"
-                className="inline-block mt-10 bg-[#c9a96e] hover:bg-[#b8944f] text-[#2d2d2d] font-bold px-8 py-3 text-sm uppercase tracking-widest font-sans transition-colors"
+                href="#booking"
+                className="inline-block bg-[#c9a96e] hover:bg-[#b8944f] text-[#2d2d2d] font-bold px-8 py-3 text-sm uppercase tracking-widest font-sans transition-colors"
               >
-                Inquire About This Suite
+                Book with {active.name.split(" ")[0]}
               </a>
             </div>
           </motion.div>

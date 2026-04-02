@@ -14,18 +14,10 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <WhyUsGrid />
-      <div id="suites">
-        <SuiteOptions />
-      </div>
-      <div id="calculator">
-        <ProfitCalculator />
-      </div>
-      <div id="amenities">
-        <AmenitiesList />
-      </div>
-      <div id="testimonials">
-        <TestimonialSlider />
-      </div>
+      <SuiteOptions />
+      <ProfitCalculator />
+      <AmenitiesList />
+      <TestimonialSlider />
       <ContactForm />
       <Footer />
     </main>

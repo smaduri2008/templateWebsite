@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Suites", href: "#suites" },
-  { label: "Amenities", href: "#amenities" },
-  { label: "Calculator", href: "#calculator" },
+  { label: "Services", href: "#services" },
+  { label: "Professionals", href: "#professionals" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Experience", href: "#experience" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -53,10 +53,10 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#contact"
+          href="#booking"
           className="hidden md:inline-block bg-[#c9a96e] hover:bg-[#b8944f] text-[#2d2d2d] font-bold px-6 py-2 text-sm uppercase tracking-widest font-sans transition-colors"
         >
-          Book Tour
+          Book Now
         </a>
 
         {/* Mobile Hamburger */}
@@ -91,11 +91,11 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="#contact"
+                href="#booking"
                 className="inline-block bg-[#c9a96e] text-[#2d2d2d] font-bold px-6 py-2 text-sm uppercase tracking-widest font-sans mt-2"
                 onClick={() => setMobileOpen(false)}
               >
-                Book Tour
+                Book Now
               </a>
             </li>
           </ul>

@@ -2,22 +2,22 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Wifi, WashingMachine, Coffee, Shield, Scissors, Droplets, Tv, ParkingCircle } from "lucide-react";
+import { Wifi, Coffee, Shield, ParkingCircle, Sparkles, Clock, Flower2, Star } from "lucide-react";
 
 const amenities = [
+  { icon: Sparkles, label: "Private Luxury Suites" },
+  { icon: Clock, label: "Flexible Appointment Times" },
   { icon: Wifi, label: "High-Speed Wi-Fi" },
-  { icon: WashingMachine, label: "On-Site Laundry" },
-  { icon: Coffee, label: "Professional Breakroom" },
-  { icon: Shield, label: "24/7 Secure Entry" },
-  { icon: Scissors, label: "Backbar Products Available" },
-  { icon: Droplets, label: "Shampoo Bowls Included" },
-  { icon: Tv, label: "Waiting Area with TV" },
+  { icon: Coffee, label: "Complimentary Refreshments" },
+  { icon: Shield, label: "Safe & Secure Environment" },
   { icon: ParkingCircle, label: "Free Client Parking" },
+  { icon: Flower2, label: "Relaxing Atmosphere" },
+  { icon: Star, label: "Premium Products Used" },
 ];
 
 export default function AmenitiesList() {
   return (
-    <section className="py-24 px-6 bg-[#f9f7f4]">
+    <section id="experience" className="py-24 px-6 bg-[#f9f7f4]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,14 +27,14 @@ export default function AmenitiesList() {
           className="text-center mb-16"
         >
           <p className="text-[#c9a96e] uppercase tracking-[0.3em] text-sm mb-3 font-sans">
-            Everything Included
+            The LuxeSuite Difference
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#2d2d2d]">
-            Premium Amenities
+            Your Comfort, Our Priority
           </h2>
           <p className="text-[#2d2d2d]/60 mt-4 font-sans max-w-xl mx-auto">
-            Everything you need to run a world-class beauty business — included
-            in your monthly rent.
+            Every detail is designed to make your visit feel like a true escape —
+            not just a salon appointment.
           </p>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function AmenitiesList() {
             <div className="relative w-full h-80 lg:h-[450px]">
               <Image
                 src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=800&q=80"
-                alt="Luxury salon amenities"
+                alt="Luxury salon experience"
                 fill
                 className="object-cover"
               />
